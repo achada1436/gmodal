@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_ui_policy">
+    <sys_ui_policy action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <conditions table="task">sys_class_name=rm_defect^ORsys_class_name=rm_enhancement^x_bate_transport_e_te_status!=^EQ<item endquery="false" field="sys_class_name" goto="false" newquery="false" operator="=" or="false" value="rm_defect"/>
+            <item endquery="false" field="sys_class_name" goto="false" newquery="false" operator="=" or="true" value="rm_enhancement"/>
+            <item endquery="false" field="x_bate_transport_e_te_status" goto="false" newquery="false" operator="!=" or="false" value=""/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </conditions>
+        <description/>
+        <global>true</global>
+        <inherit>true</inherit>
+        <model_id/>
+        <model_table/>
+        <on_load>true</on_load>
+        <order>100</order>
+        <reverse_if_false>true</reverse_if_false>
+        <run_scripts>false</run_scripts>
+        <script_false><![CDATA[function onCondition() {
+
+}]]></script_false>
+        <script_true><![CDATA[function onCondition() {
+
+}]]></script_true>
+        <set_values/>
+        <short_description>(TE) Display TE Status</short_description>
+        <sys_class_name>sys_ui_policy</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-09-19 18:10:00</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>8a01b4144fca66006f9ce321a310c779</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>(TE) Display TE Status</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Transport Expresso" source="x_bate_transport_e">ee510b994fc8ea00a766a88ca310c772</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Transport Expresso">ee510b994fc8ea00a766a88ca310c772</sys_scope>
+        <sys_update_name>sys_ui_policy_8a01b4144fca66006f9ce321a310c779</sys_update_name>
+        <sys_updated_by>206437886</sys_updated_by>
+        <sys_updated_on>2017-08-16 17:10:39</sys_updated_on>
+        <table>task</table>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_ui_policy>
+</record_update>

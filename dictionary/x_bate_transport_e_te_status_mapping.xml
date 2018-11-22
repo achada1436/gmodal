@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="TE Status Mapping" max_length="40" name="x_bate_transport_e_te_status_mapping" type="collection">
+        <element dynamic_ref_qual="23d9f0c24f352600a766a88ca310c7cc" label="SN Status Field" max_length="32" name="sn_status_field" reference="sys_choice" reference_qual="javascript:new TransportExpresso().getSNStatusChoices(current)" type="reference" use_reference_qualifier="dynamic"/>
+        <element choice="1" choice_field="table" choice_table="x_bate_transport_e_te_field_mapping" label="Table" max_length="40" name="table" type="choice">
+            <choice/>
+        </element>
+        <element dynamic_ref_qual="3c1b7cc24f352600a766a88ca310c7e0" label="TE Status Field" max_length="32" name="te_status_field" reference="sys_choice" reference_qual="javascript:new TransportExpresso().getTEStatusChoices(current)" type="reference" use_reference_qualifier="dynamic"/>
+        <index name="index">
+            <element name="sn_status_field"/>
+        </index>
+        <index name="index2">
+            <element name="te_status_field"/>
+        </index>
+    </element>
+</database>

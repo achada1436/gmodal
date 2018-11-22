@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script/>
+        <description>emese </description>
+        <direct>false</direct>
+        <endpoint>x_bate_transport_e_TransportExpressoSupport.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<style>
+		HTML[data-doctype=true] body[data-formName="ui_page_render"] {
+           padding: 0px !important;
+        }
+		h2, h4 {
+		   padding-bottom: 10px;
+		   padding-left: 10px;
+		}
+		table {
+		   padding-left: 30px;
+		}
+		tr, td {
+		   padding: 5px;
+		}
+		#training_topics {
+		   border: 1px solid #e6e8ea;
+		   margin-left: 40px;
+		   margin-right: 40px;
+		   padding: 20px;
+		}
+		#heading {
+		   padding-top: 10px;
+		   padding-bottom: 10px;
+		   margin-left: 40px;
+		}
+		#heading h2 {
+		   display: inline;
+		}
+		#top_menu {
+		  height:45px;
+		  background-color: #e6e8ea;
+		  border-bottom: 1px solid #bdc0c4;
+		  margin:0px;
+		}
+		#top_button {
+		   float:right;
+		   margin: 5px;
+		}
+	</style>
+
+	<div id="top_menu">
+	</div>
+	<div id="heading">
+	<h2>Transport Expresso</h2>
+	</div>
+	<div id="training_topics">
+	
+	<table>
+		<thead>
+			<tr>
+     			<th>Support</th>
+    		</tr>
+		</thead>
+		<tr>
+		<td>
+		email: <a href="mailto:support@basistechnologies.com?Subject=Transport Expresso Support" target="_top">Transport Expresso Support</a>
+			</td>
+			
+		</tr>
+
+	</table>
+
+	</div>
+</j:jelly>]]></html>
+        <name>TransportExpressoSupport</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-11-06 19:01:43</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>7709c07f4f7e62006f9ce321a310c700</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>TransportExpressoSupport</sys_name>
+        <sys_package display_value="Transport Expresso" source="x_bate_transport_e">ee510b994fc8ea00a766a88ca310c772</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Transport Expresso">ee510b994fc8ea00a766a88ca310c772</sys_scope>
+        <sys_update_name>sys_ui_page_7709c07f4f7e62006f9ce321a310c700</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-11-07 17:39:50</sys_updated_on>
+    </sys_ui_page>
+</record_update>

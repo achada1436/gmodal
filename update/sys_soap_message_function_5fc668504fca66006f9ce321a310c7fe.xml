@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_soap_message_function">
+    <sys_soap_message_function action="INSERT_OR_UPDATE">
+        <authentication_type>basic_simple</authentication_type>
+        <basic_auth_password>1n+n6VUmQfeYoHhOoYpZmQ==</basic_auth_password>
+        <basic_auth_profile/>
+        <basic_auth_user>btiwebservic</basic_auth_user>
+        <certificate/>
+        <enable_mutual_auth>false</enable_mutual_auth>
+        <envelope><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sap-com:document:sap:soap:functions:mc-style">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:_-bti_-teTaskChangeWs>
+         <!--Optional:-->
+         <XDescription>${XDescription}</XDescription>
+         <XSystemNumber>${XSystemNumber}</XSystemNumber>
+         <XTask>
+            <ID>${ID}</ID>
+            <CAPTION>${CAPTION}</CAPTION>
+            <REFERENCE>${REFERENCE}</REFERENCE>
+            <GROUPID>${GROUPID}</GROUPID>
+            <TYPEID>${TYPEID}</TYPEID>
+            <TESTERID>${TESTERID}</TESTERID>
+            <PRIORITY>${PRIORITY}</PRIORITY>
+            <PROJECTID>${PROJECTID}</PROJECTID>
+            <LOCKED>${LOCKED}</LOCKED>
+            <PATH>${PATH}</PATH>
+            <STAT_DEPL>${STAT_DEPL}</STAT_DEPL>
+            <STAT_PLAN>${STAT_PLAN}</STAT_PLAN>
+            <STAT_DEPL_MAN>${STAT_DEPL_MAN}</STAT_DEPL_MAN>
+            <STAT_PLAN_MAN>${STAT_PLAN_MAN}</STAT_PLAN_MAN>
+            <OWNER>${OWNER}</OWNER>
+            <TEXT>${TEXT}</TEXT>
+            <CF_500>${CF_500}</CF_500>
+            <CF_501>${CF_501}</CF_501>
+            <CF_502>${CF_502}</CF_502>
+            <CF_503>${CF_503}</CF_503>
+            <CF_504>${CF_504}</CF_504>
+            <CF_505>${CF_505}</CF_505>
+            <CF_506>${CF_506}</CF_506>
+            <CF_507>${CF_507}</CF_507>
+            <CF_508>${CF_508}</CF_508>
+            <CF_509>${CF_509}</CF_509>
+            <CF_510>${CF_510}</CF_510>
+            <CF_511>${CF_511}</CF_511>
+            <CF_512>${CF_512}</CF_512>
+            <CF_513>${CF_513}</CF_513>
+            <CF_514>${CF_514}</CF_514>
+            <CF_515>${CF_515}</CF_515>
+            <CF_516>${CF_516}</CF_516>
+            <CF_517>${CF_517}</CF_517>
+            <CF_518>${CF_518}</CF_518>
+            <CF_519>${CF_519}</CF_519>
+            <CF_520>${CF_520}</CF_520>
+            <CF_521>${CF_521}</CF_521>
+            <CF_522>${CF_522}</CF_522>
+            <CF_523>${CF_523}</CF_523>
+            <CF_524>${CF_524}</CF_524>
+            <CF_525>${CF_525}</CF_525>
+            <CF_526>${CF_526}</CF_526>
+            <CF_527>${CF_527}</CF_527>
+            <CF_528>${CF_528}</CF_528>
+            <CF_529>${CF_529}</CF_529>
+            <CF_530>${CF_530}</CF_530>
+            <CF_531>${CF_531}</CF_531>
+            <CF_532>${CF_532}</CF_532>
+            <CF_533>${CF_533}</CF_533>
+            <CF_534>${CF_534}</CF_534>
+            <CF_535>${CF_535}</CF_535>
+            <CF_536>${CF_536}</CF_536>
+            <CF_537>${CF_537}</CF_537>
+            <CF_538>${CF_538}</CF_538>
+            <CF_539>${CF_539}</CF_539>
+            <CF_540>${CF_540}</CF_540>
+            <CF_541>${CF_541}</CF_541>
+            <CF_542>${CF_542}</CF_542>
+            <CF_543>${CF_543}</CF_543>
+            <CF_544>${CF_544}</CF_544>
+            <CF_545>${CF_545}</CF_545>
+            <CF_546>${CF_546}</CF_546>
+            <CF_547>${CF_547}</CF_547>
+            <CF_548>${CF_548}</CF_548>
+            <CF_549>${CF_549}</CF_549>
+            <CF_550>${CF_550}</CF_550>
+         </XTask>
+         <XUpdateCustfields>${XUpdateCustfields}</XUpdateCustfields>
+         <XUpdateDesc>${XUpdateDesc}</XUpdateDesc>
+         <XUpdateTesters>${XUpdateTesters}</XUpdateTesters>
+         <!--Optional:-->
+         <XUpddateTask>${XUpddateTask}</XUpddateTask>
+         <!--Optional:-->
+         <XtCustfields>
+            <!--Zero or more repetitions:-->
+            <item>
+               <Id>${Id}</Id>
+               <Value>${Value}</Value>
+            </item>
+         </XtCustfields>
+         <!--Optional:-->
+         <XtTesters>
+            <!--Zero or more repetitions:-->
+            <item>
+               <Testerid>${Testerid}</Testerid>
+               <Targetroleid>${Targetroleid}</Targetroleid>
+               <Targetid>${Targetid}</Targetid>
+               <Systemid>${Systemid}</Systemid>
+               <Mandt>${Mandt}</Mandt>
+               <SmtpAddr>${SmtpAddr}</SmtpAddr>
+               <Testername>${Testername}</Testername>
+            </item>
+         </XtTesters>
+      </urn:_-bti_-teTaskChangeWs>
+   </soapenv:Body>
+</soapenv:Envelope>]]></envelope>
+        <function_name>_-bti_-teTaskChangeWs</function_name>
+        <key_store/>
+        <key_store_alias/>
+        <key_store_password/>
+        <lock>false</lock>
+        <protocol_profile/>
+        <qualified_name>Transport Expresso [ _-bti_-teTaskChangeWs ]</qualified_name>
+        <soap_action/>
+        <soap_endpoint>http://webdisp.basistechnologies.net:8001/sap/bc/srt/rfc/bti/te_task_ws/100/tetask/test</soap_endpoint>
+        <soap_message display_value="Transport Expresso">e9c620904fca66006f9ce321a310c7b6</soap_message>
+        <strip_whitespace>false</strip_whitespace>
+        <sys_class_name>sys_soap_message_function</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-09-19 17:25:06</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>5fc668504fca66006f9ce321a310c7fe</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>_-bti_-teTaskChangeWs</sys_name>
+        <sys_package display_value="Transport Expresso" source="x_bate_transport_e">ee510b994fc8ea00a766a88ca310c772</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Transport Expresso">ee510b994fc8ea00a766a88ca310c772</sys_scope>
+        <sys_update_name>sys_soap_message_function_5fc668504fca66006f9ce321a310c7fe</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-10-14 15:32:18</sys_updated_on>
+        <use_basic_auth>true</use_basic_auth>
+        <use_mid_server/>
+        <use_ws_security>false</use_ws_security>
+        <ws_security_type/>
+        <ws_security_username_profile/>
+        <ws_security_x509_profile/>
+    </sys_soap_message_function>
+</record_update>

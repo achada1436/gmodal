@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="TransportExpresso Bus" max_length="40" name="x_bate_transport_e_transportexpresso_bus" type="collection">
+        <element label="Reference" max_length="40" name="reference" type="string"/>
+        <element label="status" max_length="40" name="status" type="string"/>
+    </element>
+</database>

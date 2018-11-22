@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_scope_table_access">
+    <sys_scope_table_access action="INSERT_OR_UPDATE">
+        <create_access>false</create_access>
+        <delete_access>false</delete_access>
+        <example_stack_trace>SOAPProcessorThread2cba18874fbd2600a766a88ca310c774
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.getCurrentStackTrace(ScopeAccessProvider.java:231)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.record(ScopeAccessProvider.java:200)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.access$100(ScopeAccessProvider.java:80)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider.recordAccess(ScopeAccessProvider.java:63)
+	com.glide.sys.fencing.dependency.ScopeAccessRecorder.record(ScopeAccessRecorder.java:13)
+	com.glide.script.fencing.access.ScopedTableAccess.hasRightsTo(ScopedTableAccess.java:79)
+	com.glide.script.fencing.access.ScopedTableAccess.hasRightsToTable(ScopedTableAccess.java:39)
+	com.glide.script.fencing.ScopedGlideRecord.jsFunction_get(ScopedGlideRecord.java:158)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	java.lang.reflect.Method.invoke(Method.java:597)
+	org.mozilla.javascript.FunctionObject.doInvoke(FunctionObject.java:597)
+	org.mozilla.javascript.FunctionObject.call(FunctionObject.java:504)
+	org.mozilla.javascript.ScriptRuntime.call(ScriptRuntime.java:1227)
+	org.mozilla.javascript.gen.c3821.call(sys_script_include.9e2c6a9c4fb1e200a766a88ca310c74c:63)
+	org.mozilla.javascript.ScriptRuntime.call(ScriptRuntime.java:1227)
+	org.mozilla.javascript.gen.c3817.call(sys_script_include.9e2c6a9c4fb1e200a766a88ca310c74c:23)
+	org.mozilla.javascript.ScriptRuntime.call(ScriptRuntime.java:1227)
+	org.mozilla.javascript.gen.c3795.call(sys_transform_script.ea7cc8cf4f7d26006f9ce321a310c7f2:9)
+	org.mozilla.javascript.gen.c3795.exec(sys_transform_script.ea7cc8cf4f7d26006f9ce321a310c7f2)
+	com.glide.script.ScriptEvaluator.execute(ScriptEvaluator.java:233)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:105)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:72)
+	com.glide.script.fencing.GlideScopedEvaluator.evaluateScript(GlideScopedEvaluator.java:298)
+	com.glide.script.fencing.GlideScopedEvaluator.evaluateScript(GlideScopedEvaluator.java:264)
+	com.glide.script.fencing.GlideScopedEvaluator.evaluateScript(GlideScopedEvaluator.java:235)
+	com.glide.script.fencing.GlideScopedEvaluator.evaluateScript(GlideScopedEvaluator.java:225)
+	com.glide.db.impex.transformer.TransformerScript.runScript(TransformerScript.java:61)
+	com.glide.db.impex.transformer.TransformerScript.runWhenScript(TransformerScript.java:122)
+	com.glide.db.impex.transformer.Transformer.runOnBeforeScript(Transformer.java:269)
+	com.glide.db.impex.transformer.Transformer.transformBatch(Transformer.java:142)
+	com.glide.db.impex.transformer.Transformer.transform(Transformer.java:76)
+	com.glide.system_import_set.ImportSetTransformerImpl.transformEach(ImportSetTransformerImpl.java:237)
+	com.glide.system_import_set.ImportSetTransformerImpl.syncTransformEach(ImportSetTransformerImpl.java:160)
+	com.glide.system_import_set.ImportSetTransformerImpl.transformAllMaps(ImportSetTransformerImpl.java:89)
+	com.glide.system_import_set.ImportSetTransformer.transformAllMaps(ImportSetTransformer.java:59)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	java.lang.reflect.Method.invoke(Method.java:597)
+	org.mozilla.javascript.NativeJavaMethod.call(NativeJavaMethod.java:255)
+	org.mozilla.javascript.ScriptRuntime.call(ScriptRuntime.java:1227)
+	org.mozilla.javascript.gen.c3701.call(sys_script.448824870a0a0b24000b128f92f7c975:9)
+	org.mozilla.javascript.gen.c3701.exec(sys_script.448824870a0a0b24000b128f92f7c975)
+	com.glide.script.ScriptEvaluator.execute(ScriptEvaluator.java:233)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:105)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:72)
+	com.glide.script.BusinessRule.runScript(BusinessRule.java:346)
+	com.glide.script.BusinessRule.runSyncBusinessRule(BusinessRule.java:258)
+	com.glide.script.BusinessRule.runBusinessRule(BusinessRule.java:170)
+	com.glide.script.BusinessRule.run(BusinessRule.java:146)
+	com.glide.script.GlideRecordBusinessRules.run(GlideRecordBusinessRules.java:85)
+	com.glide.script.GlideRecord.runScripts(GlideRecord.java:1159)
+	com.glide.script.GlideRecord.runScriptsAndEngines(GlideRecord.java:1109)
+	com.glide.script.GlideRecord.postChange(GlideRecord.java:4478)
+	com.glide.script.GlideRecord.postInsert(GlideRecord.java:4446)
+	com.glide.script.GlideRecord.insert(GlideRecord.java:4382)
+	com.glide.script.GlideRecord.insert(GlideRecord.java:4298)
+	com.glide.processors.soap.command.Insert.process(Insert.java:57)
+	com.glide.processors.soap.command.ImportSetInsert.process(ImportSetInsert.java:43)
+	com.glide.processors.soap.SOAPProcessorThread.doCommand(SOAPProcessorThread.java:305)
+	com.glide.processors.soap.SOAPProcessorThread.doCommand(SOAPProcessorThread.java:294)
+	com.glide.processors.soap.SOAPProcessorThread.processStandardWebService(SOAPProcessorThread.java:226)
+	com.glide.processors.soap.SOAPProcessorThread.processBody(SOAPProcessorThread.java:204)
+	com.glide.processors.soap.SOAPProcessorThread.processRequest(SOAPProcessorThread.java:171)
+	com.glide.processors.soap.SOAPProcessorThread.run0(SOAPProcessorThread.java:129)
+	com.glide.util.ParentedThread.run(ParentedThread.java:51)
+</example_stack_trace>
+        <read_access>true</read_access>
+        <source_scope display_value="Transport Expresso">ee510b994fc8ea00a766a88ca310c772</source_scope>
+        <sys_class_name>sys_scope_table_access</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-09-15 19:19:50</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>e0ba54c74fbd2600a766a88ca310c70f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>task</sys_name>
+        <sys_package display_value="Transport Expresso" source="x_bate_transport_e">ee510b994fc8ea00a766a88ca310c772</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Transport Expresso">ee510b994fc8ea00a766a88ca310c772</sys_scope>
+        <sys_update_name>sys_scope_table_access_e0ba54c74fbd2600a766a88ca310c70f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-09-15 19:19:50</sys_updated_on>
+        <table_name>task</table_name>
+        <target_scope display_value="Global">global</target_scope>
+        <write_access>false</write_access>
+    </sys_scope_table_access>
+</record_update>

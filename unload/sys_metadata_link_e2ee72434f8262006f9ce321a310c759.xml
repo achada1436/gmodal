@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload</directory>
+        <documentkey>b4434f0b4f0b3100a766a88ca310c733</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_choice action="DELETE" field="x_bate_transport_e_te_status" table="task" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>x_bate_transport_e_te_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>TE Ticket Created</label>
+            <language>en</language>
+            <name>task</name>
+            <sequence>0</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-04-15 20:24:03</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>094877bf4f53b100a766a88ca310c7dc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-04-15 20:24:03</sys_updated_on>
+            <value>TE Ticket Created</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>x_bate_transport_e_te_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Deployment Complete</label>
+            <language>en</language>
+            <name>task</name>
+            <sequence>1</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-31 22:21:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>fc43cb0b4f0b3100a766a88ca310c75e</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-04-15 20:24:03</sys_updated_on>
+            <value>Deployment Complete</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>x_bate_transport_e_te_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Planning Complete</label>
+            <language>en</language>
+            <name>task</name>
+            <sequence>2</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-31 22:21:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>f843cb0b4f0b3100a766a88ca310c760</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-04-15 20:24:03</sys_updated_on>
+            <value>Planning Complete</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>x_bate_transport_e_te_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Unit Testing Complete</label>
+            <language>en</language>
+            <name>task</name>
+            <sequence>3</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-31 22:21:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>7443cb0b4f0b3100a766a88ca310c762</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-04-15 20:24:03</sys_updated_on>
+            <value>Unit Testing Complete</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>x_bate_transport_e_te_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Ready for Test</label>
+            <language>en</language>
+            <name>task</name>
+            <sequence>4</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-31 22:21:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>fc43cb0b4f0b3100a766a88ca310c763</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-04-15 20:24:03</sys_updated_on>
+            <value>Ready for Test</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>x_bate_transport_e_te_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Awaiting Test</label>
+            <language>en</language>
+            <name>task</name>
+            <sequence>5</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-31 22:21:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>3c434f0b4f0b3100a766a88ca310c731</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-04-15 20:24:03</sys_updated_on>
+            <value>Awaiting Test</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>x_bate_transport_e_te_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Testing Successful</label>
+            <language>en</language>
+            <name>task</name>
+            <sequence>6</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-31 22:21:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>b4434f0b4f0b3100a766a88ca310c733</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-04-15 20:24:03</sys_updated_on>
+            <value>Testing Successful</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>x_bate_transport_e_te_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Ready for Production</label>
+            <language>en</language>
+            <name>task</name>
+            <sequence>7</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-31 22:21:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>30434f0b4f0b3100a766a88ca310c735</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-04-15 20:24:03</sys_updated_on>
+            <value>Ready for Production</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>x_bate_transport_e_te_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>In Production</label>
+            <language>en</language>
+            <name>task</name>
+            <sequence>8</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-31 22:21:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>b8434f0b4f0b3100a766a88ca310c736</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-04-15 20:24:03</sys_updated_on>
+            <value>In Production</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>x_bate_transport_e_te_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Awaiting Test Import</label>
+            <language>en</language>
+            <name>task</name>
+            <sequence>9</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-31 22:21:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>34434f0b4f0b3100a766a88ca310c738</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-04-15 20:24:03</sys_updated_on>
+            <value>Awaiting Test Import</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>x_bate_transport_e_te_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Awaiting Production Import</label>
+            <language>en</language>
+            <name>task</name>
+            <sequence>10</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-31 22:21:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>bc434f0b4f0b3100a766a88ca310c739</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-04-15 20:24:03</sys_updated_on>
+            <value>Awaiting Production Import</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>x_bate_transport_e_te_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Ready for Release Test</label>
+            <language>en</language>
+            <name>task</name>
+            <sequence>11</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-31 22:21:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>38434f0b4f0b3100a766a88ca310c73b</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-04-15 20:24:03</sys_updated_on>
+            <value>Ready for Release Test</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>x_bate_transport_e_te_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Awaiting Release Test Import</label>
+            <language>en</language>
+            <name>task</name>
+            <sequence>12</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-31 22:21:21</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>b0434f0b4f0b3100a766a88ca310c73d</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-04-15 20:24:03</sys_updated_on>
+            <value>Awaiting Release Test Import</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>x_bate_transport_e_te_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>ERROR: Failed to Create Business Task</label>
+            <language>en</language>
+            <name>task</name>
+            <sequence>13</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-06-05 17:20:04</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>1337bd984f600600a766a88ca310c78e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-06-05 17:20:04</sys_updated_on>
+            <value>ERROR: Failed to Create Business Task</value>
+        </sys_choice>
+        <sys_choice_set action="DELETE">
+            <element>x_bate_transport_e_te_status</element>
+            <name>task</name>
+            <sys_class_name/>
+            <sys_created_by/>
+            <sys_created_on/>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id/>
+            <sys_mod_count/>
+            <sys_name/>
+            <sys_package/>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope/>
+            <sys_update_name/>
+            <sys_updated_by/>
+            <sys_updated_on>2016-09-28 17:33:00</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-09-28 17:33:00</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>e2ee72434f8262006f9ce321a310c759</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Testing Successful</sys_name>
+        <sys_package display_value="Transport Expresso" source="x_bate_transport_e">ee510b994fc8ea00a766a88ca310c772</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Transport Expresso">ee510b994fc8ea00a766a88ca310c772</sys_scope>
+        <sys_update_name>sys_metadata_link_e2ee72434f8262006f9ce321a310c759</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-09-28 17:33:00</sys_updated_on>
+        <tablename>sys_choice</tablename>
+    </sys_metadata_link>
+</record_update>

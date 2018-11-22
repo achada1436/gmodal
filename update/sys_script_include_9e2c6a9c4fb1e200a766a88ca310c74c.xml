@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_bate_transport_e.TransportExpresso</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>TransportExpresso</name>
+        <script><![CDATA[gs.include("PrototypeServer");
+
+var TransportExpresso = Class.create();
+
+TransportExpresso.prototype = 
+{
+    initialize : function(transport_expresso_object) 
+	{
+		this.te_object = transport_expresso_object;
+		this.te_key_field = "";
+		this.task_record = "";
+    },
+	validateInput: function()
+	{
+		gs.debug("validateInput");
+		this.key_field = this._getFieldKey();
+		if (!this.key_field) 
+		{
+			return "Need to set Key in Transport Expresso Mapping Table";
+		}
+
+		if (!this.te_object[this.key_field] || this.te_object[this.key_field] == "") 
+		{
+			return this.key_field + " was not sent";
+		}
+
+		this.task_record = this._getTaskRecord();
+
+		if (!this.task_record) 
+		{
+			return "Reference number does not exist in ServiceNow " + 
+			this.getSNMapping(this.key_field) + " " + this.te_object[this.key_field];
+		}
+
+		return "";
+	},
+
+	process : function() 
+	{
+		this.key_field = this._getFieldKey();
+        this.task_record = this._getTaskRecord();
+        gs.info("processing this.task_record.number = " + this.task_record.number);
+		return this._updateFields();
+	},
+	
+	getSNMapping : function(te_field) 
+	{
+		var field_map = new GlideRecord('x_bate_transport_e_te_field_mapping');
+		var sn_field_exists = field_map.get('te_field', te_field);
+		
+		if (!sn_field_exists) 
+		{
+			return false;
+		}
+        gs.info("field_map.sn_field = " + field_map.sn_field);
+		return field_map.sn_field;
+		
+	},
+	
+	_getFieldKey : function() 
+	{
+		var key = new GlideRecord('x_bate_transport_e_te_field_mapping');
+		var key_exists = key.get('key', true);
+		
+		if (!key_exists) {
+			return false;
+		}
+		
+		//KPMG customimzation: added .toLowerCase since Scripting is case sensitive
+		return key.te_field.toLowerCase();
+	},
+
+	_getTaskRecord : function() 
+	{
+		var reference = new GlideRecord('task');
+    	var does_reference_exist = reference.get(this.getSNMapping(this.key_field),            
+													this.te_object[this.key_field]);
+		gs.info("this.key_field = " + this.key_field);
+		if (!does_reference_exist) 
+		{
+			gs.info("task record does not exist");
+			return false;
+		}
+		else
+		{
+			gs.info("task Record exists");
+		}
+		
+		var task = new GlideRecord(reference.sys_class_name);
+		task.get(reference.sys_id);
+		
+		return task;
+	},
+
+	_updateFields : function() 
+	{
+		var sn_field = "";
+		var te_field_value = "";
+		var update_array = [];
+		for (field in this.te_object) 
+		{
+			if (field == this.key_field) 
+			{
+				continue;
+			}
+			sn_field = this.getSNMapping(field);
+			te_field_value = this.te_object[field];
+			if(sn_field)
+			{
+				update_array.push(sn_field);
+				this.task_record[sn_field] = te_field_value;
+				
+				//KPMG customization: record a work note for field changes
+				this.task_record.work_notes = '(TE) Update Received - ' + this.task_record[sn_field].getLabel() + ' set to ' + te_field_value + '\n';
+				
+                gs.info("te_field_value = " + te_field_value);
+			}
+		}
+		this.task_record.update();
+		return "Fields: " + update_array.toString() + " have been updated in record: " + this.te_object[this.key_field];
+	},
+
+	setSNState : function(task_record) 
+	{
+		var te_status_map = new GlideRecord('x_bate_transport_e_te_status_mapping');
+		te_status_map.addQuery('te_status_field.value', task_record.x_bate_transport_e_te_status);
+		te_status_map.addQuery('table', task_record.getTableName());
+		te_status_map.query();
+		
+		if (te_status_map.next()) {
+			return te_status_map.sn_status_field.value;
+		}
+	
+		return false;
+	},
+	_getSourceTable: function()
+	{
+		//get SOURCE TABLE
+		var getSourceTable = new GlideRecord("sys_transform_entry");
+		getSourceTable.query();
+		var i=0;
+		var sourceTable;
+		while(getSourceTable.next())
+		{
+			if(getSourceTable.source_table=="x_bate_transport_e_transportexpresso")
+			{
+				sourceTable = getSourceTable.source_table;
+				break;
+			}
+		}
+        gs.info("sourcetable = " + sourceTable);
+		return sourceTable;
+	},
+
+	_getDestinationTable: function()
+	{
+		//get DESTINATION TABLE
+		var getDestTable = new GlideRecord("sys_transform_entry");
+		getDestTable.query();
+		var i=0;
+		var destTable;
+		while(getDestTable.next())
+		{
+			if(getDestTable.target_table=="x_bate_transport_e_transportexpresso_bus")
+			{
+				destTable = getDestTable.target_table;
+				break;
+			}
+		}
+        gs.info("destTable= " + destTable);
+		return destTable;
+	},
+	addWebServiceInput : function(te_input_field) 
+	{
+		var field_label = te_input_field.sn_field
+		var field_name = "u_"+te_input_field.sn_field.toString().toLowerCase().replace(" ","_");
+		var destTable=this._getDestinationTable();
+		var sourceTable=this._getSourceTable();
+
+		//ADD FIELD TO BUS TABLE
+		var destinationField = new GlideRecord("sys_dictionary");
+		destinationField.addEncodedQuery("name="+te_input_field.table+"^ORname=task^GOTOelement="+field_label.toString().toLowerCase().replace(" ","_"));
+		destinationField.query();
+		destinationField.next();
+		if(destinationField.next)
+		{
+		   var doesExist = new GlideRecord("sys_dictionary");
+		   doesExist.addEncodedQuery("column_label="+field_label +"^name=x_bate_transport_e_transportexpresso_bus");
+		   doesExist.query();
+		   if(doesExist.getRowCount()==0)
+		   {
+			var newGr = new GlideRecord("sys_dictionary")
+			newGr.initialize();
+			newGr = destinationField;
+			newGr.name =destTable ;
+			newGr.insert();
+			gs.info('done...' +destTable );
+		   }
+		   else
+		   {
+			gs.info(doesExist.getRowCount());
+			gs.info("already Exists");
+		   }
+
+		}
+
+		var gr = new GlideRecord("sys_transform_entry");
+		gr.initialize();
+		gr.map = "440c08cf4f7d26006f9ce321a310c76c";
+		gr.source_table = sourceTable ;
+		gr.target_table = destTable;
+		gr.source_field = te_input_field.te_field.toString();
+		gr.target_field= field_label.toString().toLowerCase().replace(" ","_")
+		gr.insert();
+
+		var inTable= new GlideRecord("sys_dictionary");
+		inTable.initialize();
+		inTable.name =sourceTable ;
+		inTable.internal_type="string";
+		inTable.column_label=te_input_field.te_field;
+		inTable.element=te_input_field.te_field ;
+		inTable.max_length=200;
+		inTable.insert();
+
+
+	},
+	
+	removeWebServiceInput : function(te_input_field) {
+	
+		var field_label = te_input_field.sn_field
+		var field_name = "u_"+te_input_field.sn_field.toString().toLowerCase().replace(" ","_");
+		
+		var deleteGr = new GlideRecord("sys_dictionary");
+		deleteGr.addQuery("name","=","x_bate_transport_e_transportexpresso");
+		deleteGr.addQuery("element","=",te_input_field.te_field);
+		deleteGr.query();
+		gs.info("x_bate_transport_e_transportexpresso field to delete = "+te_input_field.te_field);
+		if(deleteGr.next())
+		{
+		  gs.info("record to delete = " + deleteGr.sys_id);
+		  deleteGr.deleteRecord();
+		}
+
+
+		var deleteGr = new GlideRecord("sys_dictionary");
+		deleteGr.addQuery("name","=","x_bate_transport_e_transportexpresso_bus");
+		deleteGr.addQuery("element","=",field_name);
+		deleteGr.query();
+		gs.info("x_bate_transport_e_transportexpresso_bus field to delete = "+field_name);
+		if(deleteGr.next())
+		{
+		  gs.info("record to delete = " + deleteGr.sys_id);
+		  deleteGr.deleteRecord();
+		}
+
+		var deleteGr = new GlideRecord("sys_transform_entry");
+		deleteGr.addQuery("source_field","=",te_input_field.te_field);
+		deleteGr.addQuery("target_field","=",field_label);
+		deleteGr.query();
+		gs.info("sys_transform_entry field to delete: source= " + te_input_field.te_field +"; target = "+field_label);
+		if(deleteGr.next())
+		{
+		  gs.info("sys_transform record to delete = " + deleteGr.sys_id);
+		  deleteGr.deleteRecord();
+		}
+
+
+	},
+	
+	updateWebServiceInput : function(previous_te_input_field, current_te_input_field) 
+	{
+		this.removeWebServiceInput(previous_te_input_field);
+		this.addWebServiceInput(current_te_input_field);
+	
+	},
+	
+	_inputParameterExists : function (te_field) 
+	{
+		var ws_input = new GlideRecord('sys_web_service_input');
+		var ws_input_exists = ws_input.get('name', te_field);
+		if (!ws_input_exists) {
+			return false;
+		}
+		return true;
+	},
+
+	_getTEWebServiceReference : function() {
+		var web_service = new GlideRecord('sys_web_service');
+		var web_service_found = web_service.get('name', 'TransportExpresso');
+		
+		if (!web_service_found) {
+			return false;
+		}
+		
+		return web_service.sys_id;
+	},
+	
+	getSNStatusChoices : function(te_status_mapping_record) {
+		var refQual = 'element=state';
+		
+		var table_name = te_status_mapping_record.table;
+		table_name = this._hasStateChoices(table_name);
+		refQual += '^name=' + table_name; 
+		gs.info("getSNStatusChoices...te_status_mapping_record  = "+te_status_mapping_record.sys_id);
+		gs.info("getSNStatusChoices...refQual= " + refQual);
+		gs.info("getSNStatusChoices...table_name= " + table_name);
+		return refQual;
+    },
+	
+	getTEStatusChoices : function(te_status_mapping_record) {
+		var refQual = 'element=x_bate_transport_e_te_status^inactive=false';
+	   
+		var table_name = te_status_mapping_record.table;
+		refQual += '^name=' + table_name; 
+		gs.info("getTEStatusChoices...te_status_mapping_record  = "+te_status_mapping_record.sys_id);
+		gs.info("getTEStatusChoices...refQual= " + refQual);
+		gs.info("getTEStatusChoices...table_name= " + table_name);
+		return refQual;
+    },
+    
+	_hasStateChoices : function(table_name) {
+		var choices = new GlideRecord('sys_choice');
+		choices.addQuery('name', table_name);
+		choices.addQuery('element', 'state');
+		choices.query();
+		
+		if (choices.hasNext()) {
+			return table_name;
+		}
+		return 'task';
+	},
+	
+	createTransportExpressoBusinessTask: function(rec) 
+	{
+		gs.info("createTransportExpressoBusinessTask");
+		
+		var ERROR_MESSAGE = "ERROR: Failed to Create Business Task";
+		var status = '';
+		var transport_expresso_soap_message_function =                                          
+		this._getSoapMessageFunction(gs.getProperty('x_bate_transport_e.te.create_function'));
+
+		try 
+		{
+			var s = new sn_ws.SOAPMessageV2('x_bate_transport_e.Transport Expresso', transport_expresso_soap_message_function.function_name);
+			s.setStringParameter('XSystemNumber', gs.getProperty('x_bate_transport_e.te.XSystemNumber'));
+
+			var field_map = new GlideRecord('x_bate_transport_e_te_field_mapping');
+			field_map.addQuery('table', rec.getTableName()).addOrCondition('key',true);
+			field_map.query();
+			while (field_map.next()) 
+			{
+				if (field_map.sn_field == "TABLE") 
+				{
+					s.setStringParameter(field_map.te_field, rec.getTableName());
+					gs.info(field_map.te_field +" = " + rec.getTableName());
+					continue;
+				}
+
+				if (field_map.sn_field == "PROPERTY")
+				{
+					s.setStringParameter(field_map.te_field, gs.getProperty('x_bate_transport_e.te.' + field_map.te_field));
+					continue;
+				}
+				s.setStringParameter(field_map.te_field, rec[field_map.sn_field].getDisplayValue());
+			}
+
+			var response = s.executeAsync();
+			gs.info("response should be below");
+			gs.info("response body = " + response.getBody());
+			gs.info("response.haveError = "  + response.haveError());
+			gs.info("response.getErrorMessage() = " + response.getErrorMessage())
+			//if (!transport_expresso_soap_message_function.use_mid_server.nil()) 
+			//{
+				response.waitForResponse(30);
+			//}
+
+
+			var responseBody = response.haveError() ? response.getErrorMessage() : response.getBody();
+			status = response.getStatusCode();
+		} 
+		catch(ex)
+		{
+			gs.info("an error happened");
+			gs.info(ex);
+			//responseBody = ex.getMessage();
+			status = '500';
+		}
+
+		//gs.info(responseBody);
+		var status_message = (status == '500') ? responseBody : this._parseResponse(responseBody, rec);
+
+		if (status_message == "TE Business Task Created") 
+		{
+			gs.addInfoMessage(status_message);
+			rec.x_bate_transport_e_te_status = status_message;
+			rec.correlation_id = this._getTaskID(responseBody, rec);
+			rec.work_notes = '(TE) Business Task ID = ' + rec.correlation_id;
+		} 
+		else 
+		{
+			//Added by KPMG to show SOAP level errors (authentication etc.) instead of ""
+			if(response.haveError())
+				status_message = response.getErrorMessage();
+				
+			gs.addErrorMessage(status_message);
+			rec.x_bate_transport_e_te_status = ERROR_MESSAGE;
+			rec.x_bate_transport_e_te_attempts++;
+			
+			//KPMG - moved this down after the SOAP call (was at the beginning of the function earlier)
+			// This is to show the message as a result of failed CALLS.
+			if (rec.x_bate_transport_e_te_attempts >= 3) 
+			{
+				gs.addErrorMessage('Number of attempts has been exceeded; please contact your administrator. ServiceNow team has been notified');
+
+			}
+			
+		}
+		rec.comments = status_message;
+		rec.update();
+		
+    },
+
+	//Added by KPMG
+	_getTaskID : function (response, task_record) 
+	{
+		try
+		{
+			var xmldoc = new XMLDocument2();
+			xmldoc.parseXML(response);
+			var taskID = xmldoc.getNodeText("//Id"); // KPMG: added to store the TE ID in correlation ID
+
+			if (taskID != '') {
+				return taskID;
+			}
+			
+		}
+		catch(ex)
+		{
+			gs.info(ex);
+		}
+	},
+	
+	//Customized by KPMG
+	_parseResponse : function (response, task_record) 
+	{
+		try
+		{
+			var xmldoc = new XMLDocument2();
+			xmldoc.parseXML(response);
+			var exceptionStatus = xmldoc.getNodeText("//Exception");
+			var statusMessage = xmldoc.getNodeText("//Message");
+			var taskID = xmldoc.getNodeText("//Id"); // KPMG: Also grab the ID to test successful creations
+
+			//KPMG: added that TaskID should be NOT EMPTY to consider a successful creation
+			if ((exceptionStatus == "") && (taskID != '')) {
+				gs.info("returning success");
+				return "TE Business Task Created";
+			}
+			
+			gs.info("returning failure..."+statusMessage);		
+			return statusMessage;
+		}
+		catch(ex)
+		{
+			gs.info(ex);
+		}
+	},
+	
+	/* PROVIDED OOTB by BASIS TECHNOLOGY
+	// Commented out because it considers wrongly successful creations
+	
+	_parseResponse : function (response, task_record) 
+	{
+		try
+		{
+			var xmldoc = new XMLDocument2();
+			xmldoc.parseXML(response);
+			var exceptionStatus = xmldoc.getNodeText("//Exception");
+			var statusMessage = xmldoc.getNodeText("//Message");
+
+			if ((exceptionStatus == "")) {
+				gs.info("returning success");
+				return "TE Business Task Created";
+			}
+			
+			gs.info("returning failure..."+statusMessage);		
+			return statusMessage;
+		}
+		catch(ex)
+		{
+			gs.info(ex);
+		}
+	},
+	*/
+	
+	_getSoapMessageFunction : function (soap_message_function) 
+	{
+		var soap_message_rec = new GlideRecord('sys_soap_message_function');
+		var soap_message_rec_exists = soap_message_rec.get('function_name', soap_message_function);
+		
+		if (!soap_message_rec_exists) {
+			return;
+		}
+		
+		return soap_message_rec;
+	}
+};
+
+
+
+
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-09-07 16:52:19</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>9e2c6a9c4fb1e200a766a88ca310c74c</sys_id>
+        <sys_mod_count>94</sys_mod_count>
+        <sys_name>TransportExpresso</sys_name>
+        <sys_package display_value="Transport Expresso" source="x_bate_transport_e">ee510b994fc8ea00a766a88ca310c772</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Transport Expresso">ee510b994fc8ea00a766a88ca310c772</sys_scope>
+        <sys_update_name>sys_script_include_9e2c6a9c4fb1e200a766a88ca310c74c</sys_update_name>
+        <sys_updated_by>206437886</sys_updated_by>
+        <sys_updated_on>2017-09-13 19:17:35</sys_updated_on>
+    </sys_script_include>
+</record_update>

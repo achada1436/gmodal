@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="sys_import_set_row" label="TransportExpresso" max_length="40" name="x_bate_transport_e_transportexpresso" type="collection">
+        <element attributes="import_attribute_name=reference" label="Reference" max_length="40" name="reference" type="string"/>
+        <element attributes="import_attribute_name=status" label="Status" max_length="40" name="status" type="string"/>
+    </element>
+</database>

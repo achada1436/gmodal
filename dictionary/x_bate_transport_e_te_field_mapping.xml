@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="TE Field Mapping" max_length="40" name="x_bate_transport_e_te_field_mapping" type="collection">
+        <element label="Key" max_length="40" name="key" type="boolean"/>
+        <element label="SN Field" max_length="40" name="sn_field" type="string"/>
+        <element choice="1" label="Table" max_length="40" name="table" type="choice">
+            <choice>
+                <element label="change_request" value="change_request"/>
+                <element label="incident" value="incident"/>
+                <element label="rm_defect" value="rm_defect"/>
+                <element label="rm_enhancement" value="rm_enhancement"/>
+            </choice>
+        </element>
+        <element label="TE Field" max_length="40" name="te_field" type="string"/>
+    </element>
+</database>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element attributes="reference_index_include=active,all_tables.live_feed=true,all_tables.text_index_translations=true,all_tables.detail_row=short_description,all_tables.display_color=priority,hasLabels=true,extension_model=hierarchy,largeTable=true,hasListeners=true" label="Task" max_length="40" name="task" sizeclass="5349889" text_index="true" type="collection">
+        <element label="Project Id" max_length="40" name="x_bate_transport_e_project_id" type="string"/>
+        <element default="0" label="TE Attempts" max_length="40" name="x_bate_transport_e_te_attempts" type="integer"/>
+        <element choice="1" label="TE Status" max_length="40" name="x_bate_transport_e_te_status" type="string">
+            <choice>
+                <element label="TE Business Task Created" sequence="0" value="TE Business Task Created"/>
+                <element label="Deployment Complete" sequence="1" value="Deployment Complete"/>
+                <element label="Planning Complete" sequence="2" value="Planning Complete"/>
+                <element label="Unit Testing Complete" sequence="3" value="Unit Testing Complete"/>
+                <element label="Ready for Test" sequence="4" value="Ready for Test"/>
+                <element label="Awaiting Test" sequence="5" value="Awaiting Test"/>
+                <element label="Testing Successful" sequence="6" value="Testing Successful"/>
+                <element label="Ready for Production" sequence="7" value="Ready for Production"/>
+                <element label="In Production" sequence="8" value="In Production"/>
+                <element label="Awaiting Test Import" sequence="9" value="Awaiting Test Import"/>
+                <element label="Awaiting Production Import" sequence="10" value="Awaiting Production Import"/>
+                <element label="Ready for Release Test" sequence="11" value="Ready for Release Test"/>
+                <element label="Awaiting Release Test Import" sequence="12" value="Awaiting Release Test Import"/>
+                <element label="ERROR: Failed to Create Business Task" sequence="13" value="ERROR: Failed to Create Business Task"/>
+                <element label="Awaiting Dev Import (RTS)" sequence="101" value="Awaiting Dev Import (RTS)"/>
+                <element label="Awaiting Unit Test (RTS)" sequence="102" value="Awaiting Unit Test (RTS)"/>
+                <element label="Ready for Dev Review (RTS)" sequence="103" value="Ready for Dev Review (RTS)"/>
+                <element label="Awaiting QA Import Approval (RTS)" sequence="104" value="Awaiting QA Import Approval (RTS)"/>
+                <element label="Awaiting QA Import (RTS)" sequence="105" value="Awaiting QA Import (RTS)"/>
+                <element label="Awaiting QA Test (RTS)" sequence="106" value="Awaiting QA Test (RTS)"/>
+                <element label="Awaiting QA Test Review (RTS)" sequence="107" value="Awaiting QA Test Review (RTS)"/>
+                <element label="Awaiting Production Import Approval" sequence="108" value="Awaiting Production Import Approval"/>
+                <element label="Awaiting Production Import" sequence="109" value="Awaiting Production Import"/>
+                <element label="Awaiting Merge Approval" sequence="110" value="Awaiting Merge Approval"/>
+                <element label="Awaiting Merge Import" sequence="111" value="Awaiting Merge Import"/>
+                <element label="Awaiting Dev Import (Project 1)" sequence="112" value="Awaiting Dev Import (Project 1)"/>
+                <element label="Awaiting Unit Test (Project 1)" sequence="113" value="Awaiting Unit Test (Project 1)"/>
+                <element label="Ready for Dev Review (Project 1)" sequence="114" value="Ready for Dev Review (Project 1)"/>
+                <element label="Awaiting QA Import Approval (Project 1)" sequence="115" value="Awaiting QA Import Approval (Project 1)"/>
+                <element label="Awaiting QA Import (Project 1)" sequence="116" value="Awaiting QA Import (Project 1)"/>
+                <element label="Awaiting QA Test (Project 1)" sequence="117" value="Awaiting QA Test (Project 1)"/>
+                <element label="Awaiting QA Test Review (Project 1)" sequence="118" value="Awaiting QA Test Review (Project 1)"/>
+                <element label="Awaiting Dev Import (Project 2)" sequence="119" value="Awaiting Dev Import (Project 2)"/>
+                <element label="Awaiting Unit Test (Project 2)" sequence="120" value="Awaiting Unit Test (Project 2)"/>
+                <element label="Ready for Dev Review (Project 2)" sequence="121" value="Ready for Dev Review (Project 2)"/>
+                <element label="Awaiting QA Import Approval (Project 2)" sequence="122" value="Awaiting QA Import Approval (Project 2)"/>
+                <element label="Awaiting QA Import (Project 2)" sequence="123" value="Awaiting QA Import (Project 2)"/>
+                <element label="Awaiting QA Test (Project 2)" sequence="124" value="Awaiting QA Test (Project 2)"/>
+                <element label="Awaiting QA Test Review (Project 2)" sequence="125" value="Awaiting QA Test Review (Project 2)"/>
+                <element label="Deployment Complete" sequence="1104" value="Deployment Complete"/>
+            </choice>
+        </element>
+        <element label="TE Type ID" max_length="40" name="x_bate_transport_e_te_type_id" type="string"/>
+    </element>
+</database>
